@@ -20,10 +20,3 @@ class ProductSerializer(serializers.ModelSerializer):
 
     def calculate_tax(self, product: Product):
         return product.price * Decimal(1.1)
-
-
-
-    # def validate(self, data):
-    #     if data['password'] != data['confirm_password']:
-    #         return serializers.ValidationError('Password is incorrect')
-    #     return data

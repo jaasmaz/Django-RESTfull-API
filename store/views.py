@@ -52,7 +52,7 @@ def collection_list(request):
 
 @api_view(['GET', 'PUT','DELETE'])
 def collection_detail(request,pk):
-    collection = request.get_object_or_404(Collection.objects.annotate(products_count=Count('products')), pk=pk)
+    collection = get_object_or_404(Collection.objects.annotate(products_count=Count('products')), pk=pk)
     if request.method == 'GET':
         serializer = CollectionSerializer(collection)
         return Response(serializer.data)
