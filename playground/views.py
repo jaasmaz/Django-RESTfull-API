@@ -1,13 +1,13 @@
 from django.shortcuts import render
-from rest_framework.response import Response
+from django.http import HttpResponse
 
-# views for testing.
-def say_hello(request):
+
+def calculate():
     x = 1
     y = 2
-    return render(request, 'hello.html', {'name': 'Jaz'})
+    return x
 
 
-def say_hi(request):
-    return Response('Hi')
-
+def say_hello(request):
+    x = calculate()
+    return render(request, 'hello.html', {'name': 'Mosh'})
