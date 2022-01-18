@@ -3,19 +3,27 @@ from rest_framework import serializers
 from store.models import Collection, Product
 from decimal import Decimal
 
-class CollectionSerializer(serializers.Serializer):
+class CollectionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Collection
-        fields = ['id', 'title']
+        fields = ['id', 'title', 'products_count']
+
+    products_count = serializers.IntegerField()
 
 
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = ['id', 'title', 'price', 'price_with_tax', 'collection', 'updated_on']
+        fields = ['id', 'title', 'description','slug', 'inventory','price', 'price_with_tax', 'collection']
 
-    updated_on = serializers.DateTimeField(source='last_update')
     price_with_tax = serializers.SerializerMethodField(method_name='calculate_tax')
 
     def calculate_tax(self, product: Product):
         return product.price * Decimal(1.1)
+
+
+
+    # def validate(self, data):
+    #     if data['password'] != data['confirm_password']:
+    #         return serializers.ValidationError('Password is incorrect')
+    #     return data
