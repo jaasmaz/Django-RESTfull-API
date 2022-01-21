@@ -1,6 +1,8 @@
 #Serializers used to convert an object to python dictionary
+from dataclasses import fields
+from xml.parsers.expat import model
 from rest_framework import serializers
-from store.models import Collection, Product
+from store.models import Collection, Product, Review
 from decimal import Decimal
 
 class CollectionSerializer(serializers.ModelSerializer):
@@ -20,3 +22,8 @@ class ProductSerializer(serializers.ModelSerializer):
 
     def calculate_tax(self, product: Product):
         return product.price * Decimal(1.1)
+
+class ReviewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Review
+        fields = ['id', 'date', 'name', 'description', 'product']
