@@ -29,7 +29,6 @@ class CollectionViewSet(ModelViewSet):
         return super().destroy(request,*args,**kwargs)
 
 class ReviewViewSet(ModelViewSet):
-    queryset = Review.objects.all()
     serializer_class = ReviewSerializer
 
     def get_queryset(self):
