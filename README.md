@@ -27,14 +27,35 @@ pipenv shell
 - Make sure to include mySQL in your OS environment variables 
 - Run MySQL in your terminal to check if it's installed properly
 
+### 5. Install Required Dependencies
 
-### 5. Make Migration and migrate models to DB
+```bash 
+pip install django-debug-toolbar
+```
+
+```bash 
+pip install mysqlclient
+```
+
+```bash 
+pip install django-filter
+```
+
+```bash 
+pip install djangorestframework
+```
+
+```bash 
+pip install drf-nested-routers
+```
+
+### 6. Make Migration and migrate models to DB
 ```bash
 python manage.py makemigrations && python manage.py migrate
 ```
 >If using Mac or Linux Run `python3` instead of python only
 
-### 6. Run The Server
+### 7. Run The Server
 ```bash
 python manage.py runserver
 ```
