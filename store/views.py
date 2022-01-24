@@ -6,7 +6,7 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.viewsets import ModelViewSet
 
-from pagination import DefaultPagination
+from .pagination import DefaultPagination
 from .models import Collection, OrderItem, Product, Review
 from .serializers import ProductSerializer, CollectionSerializer, ReviewSerializer
 from .filters import ProductFilter
